@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int numeros[5]; // Declarar arreglo de 5 enteros
+    int suma = 0;
+
+    cout << "=== Sumar los elementos de un arreglo ===\n";
+
+    // Pedir al usuario los 5 números
+    for (int i = 0; i < 5; i++) {
+        cout << "Ingrese el elemento " << i + 1 << ": ";
+        cin >> numeros[i];
+    }
+
+    // Calcular la suma
+    for (int i = 0; i < 5; i++) {
+        suma += numeros[i];
+    }
+
+    // Mostrar resultado
+    cout << "La suma de los elementos es: " << suma << endl;
+
+    return 0;
+}
