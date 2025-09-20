@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cmath> // Para pow()
+
+using namespace std;
+
+int main() {
+    double P, r, n, t, A;
+
+    cout << "=== Calculo de Interes Compuesto ===\n";
+    cout << "Ingrese el capital inicial (P): ";
+    cin >> P;
+    cout << "Ingrese la tasa de interes anual en decimal (r): ";
+    cin >> r; // ejemplo: 5% = 0.05
+    cout << "Ingrese el numero de veces que se aplica el interes al anio (n): ";
+    cin >> n;
+    cout << "Ingrese el numero de anios (t): ";
+    cin >> t;
+
+    // Fórmula del interés compuesto
+    A = P * pow((1 + r / n), n * t);
+
+    cout << "El monto final (A) es: " << A << endl;
+
+    return 0;
+}
