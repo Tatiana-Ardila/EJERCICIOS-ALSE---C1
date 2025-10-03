@@ -1,0 +1,55 @@
+#include <iostream>
+#include <string>
+#include <cstdlib>
+using namespace std;
+
+float add(float a, float b) { return a + b; }
+float subtract(float a, float b) { return a - b; }
+float multiply(float a, float b) { return a * b; }
+float divide(float a, float b) {
+    if (b == 0) {
+        cerr << "Error: División entre cero." << endl;
+        exit(1);
+    }
+    return a / b;
+}
+
+typedef float (*Operation)(float, float);
+
+void performOperation(Operation op, float x, float y) {
+    cout << "El resultado de la operacion es " << op(x, y) << endl;
+}
+
+int main(int argc, char* argv[]) {
+    if (argc != 4) {
+        cerr << "USO: " << argv[0] << " <num1> <operador> <num2>" << endl;
+        return 1;
+    }
+    try {
+        float num1 = stof(argv[1]);   // convierte string a float
+        string op = argv[2];
+        float num2 = stof(argv[3]);   // convierte string a float
+        Operation operation = nullptr;
+        if (op == "+") {
+            operation = add;
+        } else if (op == "-") {
+            operation = subtract;
+        } else if (op == "*" || op == "x") {
+            operation = multiply;
+        } else if (op == "/") {
+            operation = divide;
+        } else {
+            cerr << "Operador no valido." << endl;
+            return 1;
+        }
+
+        performOperation(operation, num1, num2);
+
+    } catch (invalid_argument& e) {
+        cerr << "Ha ingresado valores inadecuados para el programa:" << endl;
+        cerr << "USO: " << argv[0] << " <num1> <operador> <num2>" << endl;
+        return 1;
+    }
+
+    return 0;
+}
